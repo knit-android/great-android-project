@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 import static com.knitandroid.greatandroidproject.Repository.HEADER_COOKIE_NAME;
 
-
+//TODO:: put all strings int resources, hide error messages when pressing on EditTexts
 public class MainActivity extends AppCompatActivity implements IMainActivity {
     private static final String TAG = "MAIN_ACTIVITY_TAG";
 
