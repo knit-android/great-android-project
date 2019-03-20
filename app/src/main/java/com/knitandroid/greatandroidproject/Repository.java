@@ -35,46 +35,4 @@ public class Repository {
         String authHeader = "Basic " + Base64.encodeToString(userString.getBytes(), Base64.NO_WRAP);
         return serverApi.getUser(authHeader);
     }
-
-    /*
-        @return {String} cookies for current session
-        if login was not successful return null TODO:: <-- it's just a quick solution this might be changed for sth better
-
-        in this method it is not easily possible to return cookie because:
-        cookie is created in onResponse,
-        cookie would have to be a field in Repository which is not a best practice that's why I think about
-        returning implemented login call which can be then accessed in login activity is it better?
-     */
-    @Nullable
-    public String login(String username, String password){
-        ServerApi serverApi = retrofit.create(ServerApi.class);
-        String userString = username + ":" + password;
-        String authHeader = "Basic " + Base64.encodeToString(userString.getBytes(), Base64.NO_WRAP);
-
-        Call<User> call = serverApi.getUser(authHeader);
-
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    User user = response.body();
-                    String cookie = response.headers().get(HEADER_COOKIE_NAME);
-                    Log.v(TAG, "login successful");
-                    Log.v(TAG, "cookie = " + cookie);
-                    Log.v(TAG, "id = " + user.getId());
-                    Log.v(TAG, "username = " + user.getUsername());
-                } else {
-                    Log.v(TAG, "login not successful");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                    // TODO :: implement failure
-            }
-        });
-        // TODO:: add class field, assign it in onResponse and return
-        return null;
-    }
-
 }
