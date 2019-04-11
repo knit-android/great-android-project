@@ -11,7 +11,6 @@ import com.knitandroid.greatandroidproject.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
 import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,6 +20,8 @@ import static com.knitandroid.greatandroidproject.Repository.HEADER_COOKIE_NAME;
 
 //TODO:: put all strings int resources, hide error messages when pressing on EditTexts
 public class MainActivity extends AppCompatActivity implements IMainActivity {
+
+
     private static final String TAG = "MAIN_ACTIVITY_TAG";
 
     public static final String KEY_EXTRA_COOKIE = "com.knitandroid.greatandroidproject.ui.COOKIE";

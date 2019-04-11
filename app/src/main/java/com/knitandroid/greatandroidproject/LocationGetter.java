@@ -31,7 +31,7 @@ public class LocationGetter {
         return lon;
     }
 
-    private double lat = 50, lon = 50;
+    private double lat = 0, lon = 0;
     public String address="";
     public LocationManager mLocationManager;
     final LocationListener mLocationListener =new LocationListener() {
@@ -79,7 +79,7 @@ public class LocationGetter {
                 try {
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, TIME, DISTANCE, mLocationListener);
                 } catch (SecurityException e) {
-                    Log.v("ck", "permission deny");
+                    Log.v("ck", e.getMessage());
                 }
 
                 if (locationManager != null) {

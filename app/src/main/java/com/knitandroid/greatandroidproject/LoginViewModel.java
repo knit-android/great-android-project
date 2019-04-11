@@ -6,6 +6,7 @@ import com.knitandroid.greatandroidproject.data.User;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 
 // are we putting all viewModels together or separate them and if so then should there be sth more in this viewModel?
@@ -22,6 +23,10 @@ public class LoginViewModel extends AndroidViewModel {
     */
     public Call<User> getLoginCall(String username, String password){
         return repository.getLoginCall(username, password);
+    }
+    public Call<ResponseBody> post_localization(String cookie, double lat, double lon, float accuracy)
+    {
+        return repository.post_localization(cookie, lat, lon, accuracy);
     }
 
 }

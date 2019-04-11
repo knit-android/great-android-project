@@ -1,14 +1,11 @@
 package com.knitandroid.greatandroidproject;
 
 import android.util.Base64;
-import android.util.Log;
 
 import com.knitandroid.greatandroidproject.data.User;
 
-import androidx.annotation.Nullable;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -34,5 +31,11 @@ public class Repository {
         String userString = username + ":" + password;
         String authHeader = "Basic " + Base64.encodeToString(userString.getBytes(), Base64.NO_WRAP);
         return serverApi.getUser(authHeader);
+    }
+
+
+    public Call<ResponseBody> post_localization(String cookie, double lat, double lon, float accuracy){
+        ServerApi serverApi = retrofit.create(ServerApi.class);
+        return serverApi.postLocalization(cookie, lat, lon, accuracy);
     }
 }
