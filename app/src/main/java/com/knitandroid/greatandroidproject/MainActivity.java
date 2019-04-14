@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                     if (response.isSuccessful()) {
                         String cookie = response.headers().get(HEADER_COOKIE_NAME);
 
+
                         /* bellow code is mostly for test reasons
                            I'm not sure yet if we should process User in the first place
                          */
